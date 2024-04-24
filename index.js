@@ -170,11 +170,8 @@ const counselingData = [
 
 // Endpoint to determine counseling eligibility
 app.post("/counseling", (req, res) => {
-  console.log("Received body:", req.body); 
   try {
     const { percentile, domicileState } = req.body;
-    console.log("Received:", percentile, domicileState);  // Log received data
-
     const recommendations = counselingData
       .filter((counseling) => {
         const meetsAllIndia = percentile >= counseling.percentileAllIndia;
@@ -188,7 +185,7 @@ app.post("/counseling", (req, res) => {
 
     console.log("Recommendations:", recommendations);  // Log filtered recommendations
 
-    const recommendationList = recommendations.join("**\n**");
+    const recommendationList = recommendations.join("------");
     res.json({
       success: true,
       message: "Recommended counseling processes based on provided percentile and domicile state are below:",
