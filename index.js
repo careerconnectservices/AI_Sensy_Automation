@@ -170,6 +170,7 @@ const counselingData = [
 
 // Endpoint to determine counseling eligibility
 app.post("/counseling", (req, res) => {
+  console.log("Received body:", req.body); 
   try {
     const { percentile, domicileState } = req.body;
     console.log("Received:", percentile, domicileState);  // Log received data
