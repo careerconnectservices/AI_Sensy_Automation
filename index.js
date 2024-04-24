@@ -50,9 +50,9 @@ const counselingData = [
   },
   {
     name: "UPTAC/UPCET/UPSEE (Top 10 Colleges)",
-    crlRankAllIndia: 220000,
-    percentileAllIndia: 84.28571429,
-    percentileHomeState: 84.28571429, // Home state not present, so copying All India
+    crlRankAllIndia: 1400000,
+    percentileAllIndia: 0,
+    percentileHomeState: 0, // Home state not present, so copying All India
   },
   {
     name: "MMMUT",
@@ -93,43 +93,34 @@ const counselingData = [
     percentileAllIndia: 82.14285714,
     percentileHomeState: 82.14285714, // Home state not present, so copying All India
   },
-  // ... existing entries ...
 
   {
     name: "REAP/MBM/RTU Kota/SKITS",
-    crlRankAllIndia: undefined,
-    percentileAllIndia: 100,
-    crlRankHomeState: undefined,
-    percentileHomeState: 100,
+    crlRankAllIndia: 500000,
+    percentileAllIndia: 64.28571429,
+    crlRankHomeState: 600000,
+    percentileHomeState: 57.14285714,
   },
   {
     name: "HSTES/JC Bose/DBCR",
-    crlRankAllIndia: undefined,
-    percentileAllIndia: 100,
-    crlRankHomeState: undefined,
-    percentileHomeState: 100,
+    crlRankAllIndia: 300000,
+    percentileAllIndia: 78.57142857,
+    crlRankHomeState: 400000,
+    percentileHomeState: 71.42857143,
   },
   {
     name: "MHT-CET",
     crlRankAllIndia: 100000,
     percentileAllIndia: 92.85714286,
-    crlRankHomeState: undefined,
-    percentileHomeState: 92.85714286,
+    crlRankHomeState: 200000,
+    percentileHomeState: 85.71428571,
   },
-  {
-    name: "WB-JEE",
-    crlRankAllIndia: 500000,
-    percentileAllIndia: 64.28571429,
-    crlRankHomeState: undefined,
-    percentileHomeState: 64.28571429,
-  },
-  // ... include any other specific counseling entries that you have data for ...
 
   {
     name: "WB-JEE",
     crlRankAllIndia: 500000,
     percentileAllIndia: 64.28571429,
-    percentileHomeState: 64.28571429, // Home state not present, so copying All India
+    percentileHomeState: 54.28571429, // Home state not present, so copying All India
   },
 ];
 
@@ -194,10 +185,12 @@ app.post("/counseling", (req, res) => {
       })
       .map((counseling) => counseling.name);
 
+    // Convert the array of recommendations to a string separated by commas
+    const recommendationList = recommendations.join(", ");
+
     res.json({
       success: true,
-      message:
-        `Recommended counseling processes based on provided percentile and domicile state ${recommendations}`
+      message: `Recommended counseling processes based on provided percentile and domicile state: ${recommendationList}`,
     });
   } catch (error) {
     logger.error(error.stack);
