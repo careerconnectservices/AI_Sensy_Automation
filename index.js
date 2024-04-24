@@ -49,7 +49,7 @@ const counselingData = [
     percentileHomeState: 78.57142857, // Home state not present, so copying All India
   },
   {
-    name: "UPTAC/UPCET/UPSEE (Top 10 Colleges)",
+    name: "UPTAC/UPCET/UPSEE Top Colleges: IET, KNIT, JSS, BIET, AKGEC, AITH, KIET, ABESEC, GL BAJAJ, GALGOTIA College(Main Campus not University which is bad), NIET",
     crlRankAllIndia: 1400000,
     percentileAllIndia: 0,
     percentileHomeState: 0, // Home state not present, so copying All India
@@ -69,7 +69,7 @@ const counselingData = [
     percentileHomeState: 89.28571429,
   },
   {
-    name: "MP-DTE (Main Campus)",
+    name: "MP-DTE Top Colleges: SGITS, IET-DAVV, JEC-Jabalpul, MITS-Gwalior, LNCT Main Campus(1992), Oriental Institute of Science & Technology, Bhopal (1995)",
     crlRankAllIndia: 400000,
     percentileAllIndia: 71.42857143,
     crlRankHomeState: 1000000,
@@ -186,11 +186,11 @@ app.post("/counseling", (req, res) => {
       .map((counseling) => counseling.name);
 
     // Convert the array of recommendations to a string separated by commas
-    const recommendationList = recommendations.join(", ");
-
+    const recommendationList = recommendations.join("**\n**");
     res.json({
       success: true,
-      message: `Recommended counseling processes based on provided percentile and domicile state: ${recommendationList}`,
+      message: `Recommended counseling processes based on provided percentile and domicile state are below:`,
+      data: recommendationList
     });
   } catch (error) {
     logger.error(error.stack);
