@@ -172,12 +172,12 @@ const counselingData = [
 app.post("/counseling", (req, res) => {
   try {
     const { percentile, domicileState } = req.body;
+    console.log("Received:", percentile, domicileState);  // Log received data
+
     const recommendations = counselingData
       .filter((counseling) => {
-        // Check if the percentile meets the All India or Home State requirement
         const meetsAllIndia = percentile >= counseling.percentileAllIndia;
-        const meetsHomeState =
-          !counseling.percentileHomeState || counseling.name === domicileState
+        const meetsHomeState = !counseling.percentileHomeState || counseling.name === domicileState
             ? meetsAllIndia
             : percentile >= counseling.percentileHomeState;
 
@@ -185,20 +185,20 @@ app.post("/counseling", (req, res) => {
       })
       .map((counseling) => counseling.name);
 
-    // Convert the array of recommendations to a string separated by commas
+    console.log("Recommendations:", recommendations);  // Log filtered recommendations
+
     const recommendationList = recommendations.join("**\n**");
     res.json({
       success: true,
-      message: `Recommended counseling processes based on provided percentile and domicile state are below:`,
-      data: recommendationList
+      message: "Recommended counseling processes based on provided percentile and domicile state are below:",
+      data: recommendationList || "No eligible counseling processes found."
     });
   } catch (error) {
-    logger.error(error.stack);
-    res
-      .status(500)
-      .json({ success: false, message: "Error processing request." });
+    console.error("Error:", error.stack);  // Detailed error log
+    res.status(500).json({ success: false, message: "Error processing request." });
   }
 });
+
 
 app.use((err, req, res, next) => {
   logger.error(err.stack);
