@@ -1,5 +1,7 @@
 const express = require("express");
-const logger = require("./config/logger");
+const logger = require("./config/logger-config");
+const nodemailer = require('nodemailer');
+const { SERVER_PORT, MAIL_SETTINGS } = require('./constants/constants');
 
 require("dotenv").config(); // Load environment variables
 
@@ -194,6 +196,31 @@ app.post("/counseling", (req, res) => {
   } catch (error) {
     console.error("Error:", error.stack);  // Detailed error log
     res.status(500).json({ success: false, message: "Error processing request." });
+  }
+});
+
+
+// Email sending route
+app.post('/send_email', async (req, res) => {
+  const { to, subject, text } = req.body;  // Added OrderId to the destructured properties
+
+  // Create a transporter object using the default SMTP transport
+  const transporter = nodemailer.createTransport(MAIL_SETTINGS);
+
+  try {
+      // Send mail with defined transport object
+      let info = await transporter.sendMail({
+          from: `"Career Connect Services" <${MAIL_SETTINGS.auth.user}>`, // sender address
+          to: to, // list of receivers
+          subject: subject, // Subject line
+          text: text, // use the dynamically created email text
+      });
+
+      console.log('Message sent: %s', info.messageId);
+      res.send({ success: true, messageId: info.messageId });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send({ success: false, message: 'Failed to send email' });
   }
 });
 

@@ -19,9 +19,14 @@
   "homepage": "https://github.com/careerconnectservices/AI_Sensy_Automation#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
     "express": "^4.19.2",
+    "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
-    "winston": "^3.13.0"
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
   }
 }
