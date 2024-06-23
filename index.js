@@ -1,12 +1,29 @@
 const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 const logger = require("./config/logger-config");
-const nodemailer = require('nodemailer');
-const { SERVER_PORT, MAIL_SETTINGS } = require('./constants/constants');
+const nodemailer = require("nodemailer");
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
+const path = require("path");
+const { SERVER_PORT, MAIL_SETTINGS } = require("./constants/constants");
 
 require("dotenv").config(); // Load environment variables
 
 const app = express();
+
+// Basic security enhancements
+app.use(helmet()); // Sets various HTTP headers to help protect your app.
+app.use(cors()); // Enable CORS with default settings.
 app.use(express.json()); // Middleware to parse JSON
+
+// Rate limiting to prevent brute-force attacks
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
 
 const counselingData = [
   {
@@ -126,6 +143,562 @@ const counselingData = [
   },
 ];
 
+const counselingIPUChoiceFillingData = [
+  {
+    Choice_No: 1,
+    Institute_Type: "GOVT",
+    Institute_Name:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program_Name: "Computer Science & Engineering (Dual Degree)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 2,
+    Institute_Type: "GOVT",
+    Institute_Name:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program_Name: "Information Technology (Dual Degree)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 3,
+    Institute_Type: "GOVT",
+    Institute_Name:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program_Name: "Electronics & Communication Engineering (Dual Degree)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 4,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 5,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Computer Science & Engineering (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 6,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "CSE- AIML",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 7,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "CSE - AI",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 8,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "CSE- DS",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 9,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Computer Science & Technology",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 10,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 11,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Information Technology and Engineering",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 12,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 13,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Computer Science & Engineering (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 14,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 15,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Information Technology (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 16,
+    Institute_Type: "Private",
+    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 17,
+    Institute_Type: "Private",
+    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 18,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Electronics & Communication Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 19,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
+    Program_Name: "Computer Science & Engineering",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 20,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
+    Program_Name: "CSE- DS",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 21,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
+    Program_Name: "Information Technology",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 22,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Electronics & Comm.- Advance Comm. Technology",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 23,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Electronics Engg.- VLSI Design & Technology",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 24,
+    Institute_Type: "GOVT",
+    Institute_Name: "University School of Automation & Robotics",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 25,
+    Institute_Type: "GOVT",
+    Institute_Name: "University School of Automation & Robotics",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 26,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Electronics & Communication Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 27,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Electronics & Communication Engineering (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 28,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
+    Program_Name: "Computer Science & Engineering",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 29,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 30,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Computer Science & Engineering (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 31,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Computer Science & Technology",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 32,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "CS",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 33,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 34,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Information Technology (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 35,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 36,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "Computer Science & Engineering (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 37,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "CSE- AIML",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 38,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "CSE- DS",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 39,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 40,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "Information Technology (Shift II)",
+    JEEMainsRank: 70000,
+  },
+  {
+    Choice_No: 41,
+    Institute_Type: "Private",
+    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
+    Program_Name: "Electronics & Communication Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 42,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
+    Program_Name: "Electronics & Communication Engineering",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 43,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 44,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 45,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 46,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 47,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Machine Learning (Shift II)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 48,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Data Science (Shift II)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 49,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Electronics & Communication Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 50,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
+    Program_Name: "Electronics & Communication Engineering (Shift II)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 51,
+    Institute_Type: "Private",
+    Institute_Name: "Guru Teg Bahadur Institute of Technology",
+    Program_Name: "Electronics & Communication Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 52,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program_Name: "Electrical & Electronics Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 53,
+    Institute_Type: "Private",
+    Institute_Name: "Maharaja Surajmal Institute Technology",
+    Program_Name: "Electrical & Electronics Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 54,
+    Institute_Type: "GOVT",
+    Institute_Name: "University School of Automation & Robotics",
+    Program_Name: "Industrial Internet of Things",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 55,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "Computer Science & Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 56,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "Computer Science & Engineering (Shift II)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 57,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "Information Technology (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 58,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "CSE (Cyber Security)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 59,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 60,
+    Institute_Type: "Private",
+    Institute_Name: "HMR Institute of Technology & Management",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 61,
+    Institute_Type: "Private",
+    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
+    Program_Name: "Electrical & Electronics Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 62,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
+    Program_Name: "Electrical & Electronics Engineering",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 63,
+    Institute_Type: "GOVT",
+    Institute_Name: "University School of Automation & Robotics",
+    Program_Name: "Automation & Robotics",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 64,
+    Institute_Type: "Private",
+    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
+    Program_Name: "Instrumentation & Control Engineering (Shift I)",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 65,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
+    Program_Name: "Industrial Internet of Things",
+    JEEMainsRank: 400000,
+  },
+  {
+    Choice_No: 66,
+    Institute_Type: "Private",
+    Institute_Name: "Greater Noida Institute of Technology",
+    Program_Name: "Computer Science & Engineering",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 67,
+    Institute_Type: "Private",
+    Institute_Name:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program_Name: "Computer Science & Engineering",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 68,
+    Institute_Type: "Private",
+    Institute_Name: "Greater Noida Institute of Technology",
+    Program_Name: "Information Technology",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 69,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program_Name: "Computer Science & Engineering",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 70,
+    Institute_Type: "Private",
+    Institute_Name:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 71,
+    Institute_Type: "Private",
+    Institute_Name:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 72,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program_Name: "Artificial Intelligence & Machine Learning",
+    JEEMainsRank: 1400000,
+  },
+  {
+    Choice_No: 73,
+    Institute_Type: "Private",
+    Institute_Name:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program_Name: "Artificial Intelligence & Data Science",
+    JEEMainsRank: 1400000,
+  },
+];
+
 /**
  * Processes BTech counseling recommendations based on student attributes.
  *
@@ -177,7 +750,8 @@ app.post("/counseling", (req, res) => {
     const recommendations = counselingData
       .filter((counseling) => {
         const meetsAllIndia = percentile >= counseling.percentileAllIndia;
-        const meetsHomeState = !counseling.percentileHomeState || counseling.name === domicileState
+        const meetsHomeState =
+          !counseling.percentileHomeState || counseling.name === domicileState
             ? meetsAllIndia
             : percentile >= counseling.percentileHomeState;
 
@@ -185,52 +759,168 @@ app.post("/counseling", (req, res) => {
       })
       .map((counseling) => counseling.name);
 
-    console.log("Recommendations:", recommendations);  // Log filtered recommendations
+    console.log("Recommendations:", recommendations); // Log filtered recommendations
 
     const recommendationList = recommendations.join("------");
     res.json({
       success: true,
-      message: "Recommended counseling processes based on provided percentile and domicile state are below:",
-      data: recommendationList || "No eligible counseling processes found."
+      message:
+        "Recommended counseling processes based on provided percentile and domicile state are below:",
+      data: recommendationList || "No eligible counseling processes found.",
     });
   } catch (error) {
-    console.error("Error:", error.stack);  // Detailed error log
+    console.error("Error:", error.stack); // Detailed error log
+    res
+      .status(500)
+      .json({ success: false, message: "Error processing request." });
+  }
+});
+
+// Secure email sending route
+app.post("/send_email", async (req, res) => {
+  const { to, subject, text } = req.body;
+  const transporter = nodemailer.createTransport(MAIL_SETTINGS);
+
+  try {
+    let info = await transporter.sendMail({
+      from: `"Career Connect Services" <${MAIL_SETTINGS.auth.user}>`,
+      to: to,
+      subject: subject,
+      text: text,
+    });
+
+    logger.info("Message sent: %s", info.messageId);
+    res.send({ success: true, messageId: info.messageId });
+  } catch (error) {
+    logger.error(error);
+    res.status(500).send({ success: false, message: "Failed to send email" });
+  }
+});
+
+// IPU choice filling with enhanced input validation and error handling
+app.post("/ipu_choice_filling", (req, res) => {
+  try {
+    const { jeemainsRank, FromWhereyouhavecompletedyou12thClass } = req.body;
+    let filteredData = counselingIPUChoiceFillingData;
+    if (FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi") {
+      filteredData = filteredData.filter(item => jeemainsRank <= item.JEEMainsRank);
+    }
+
+    const doc = new PDFDocument({ margin: 40, size: 'A4', layout: 'landscape' });
+    const fileName = `Choice_Filling_${Date.now()}.pdf`;
+    const filePath = path.join(__dirname, "public", fileName);
+    doc.pipe(fs.createWriteStream(filePath));
+
+    // Set title
+    doc.fontSize(16).fillColor('black').font('Helvetica-Bold')
+       .text('Career Connect Service Free Choice Filling for IPU', 50, 30, { align: 'center', underline: true });
+
+    // Define column widths and other constants
+    const headers = ["S. No", "Type", "Institute Name", "Program Name"];
+    const columnWidths = [50, 80, 390, 390];  // Space allocation per column
+    const startY = 100;  // Adjust start position to give space for the title
+    let yPosition = startY;
+
+    // Function to draw headers with blue text
+    function drawHeaders(doc, headers, yPosition, columnWidths) {
+      doc.fontSize(10).fillColor('blue').font('Helvetica-Bold');
+      let xPosition = 50;
+      headers.forEach((header, i) => {
+        doc.text(header, xPosition, yPosition, { width: columnWidths[i], align: 'center' });
+        xPosition += columnWidths[i];
+      });
+    }
+
+    // Adding headers
+    drawHeaders(doc, headers, yPosition, columnWidths);
+    yPosition += 25; // Increase yPosition by header height
+
+    // Function to calculate dynamic text height and ensure proper wrapping
+    function calculateTextHeight(text, width, fontSize) {
+      doc.font('Helvetica').fontSize(fontSize);
+      const words = text.split(' ');
+      let line = '';
+      let lines = 1;
+      words.forEach(word => {
+        const testLine = line + word + ' ';
+        if (doc.widthOfString(testLine) > width) {
+          lines++;
+          line = word + ' ';
+        } else {
+          line = testLine;
+        }
+      });
+      return lines * (fontSize * 1.5);  // Adjusted line height for better readability
+    }
+
+    // Adding rows with alternate coloring for better readability
+    filteredData.forEach((item, index) => {
+      const rowHeight = Math.max(
+        calculateTextHeight(item.Institute_Name, columnWidths[2], 10),
+        calculateTextHeight(item.Program_Name, columnWidths[3], 10),
+        20  // Minimum row height
+      );
+
+      if (yPosition + rowHeight > doc.page.height - 50) {
+        doc.addPage();
+        yPosition = 50;
+        drawHeaders(doc, headers, yPosition, columnWidths);
+        yPosition += 25;
+      }
+
+      // Alternate row color
+      let fillColor = index % 2 === 0 ? '#EEEEEE' : '#FFFFFF';  // Slightly gray for better contrast on alternate rows
+      let totalWidth = columnWidths.reduce((a, b) => a + b, 0);  // Correctly sum up the total width
+
+      let xPosition = 50;
+      doc.rect(xPosition, yPosition, totalWidth, rowHeight).fill(fillColor);
+      [index + 1, item.Institute_Type, item.Institute_Name, item.Program_Name].forEach((text, i) => {
+        doc.fontSize(10).fillColor('#000000').text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, { width: columnWidths[i], align: 'left' });
+        xPosition += columnWidths[i];
+      });
+
+      yPosition += rowHeight;  // Increment yPosition by the dynamic row height
+    });
+
+    doc.end();  // Finalize the PDF and end the stream
+
+    const downloadLink = `${req.protocol}://${req.get("host")}/download/${fileName}`;
+    res.json({
+      success: true,
+      message: "Generated PDF with clearly visible headers. Download from the link below.",
+      pdfLink: downloadLink,
+    });
+  } catch ( error) {
+    logger.error("Error:", error);
     res.status(500).json({ success: false, message: "Error processing request." });
   }
 });
 
 
-// Email sending route
-app.post('/send_email', async (req, res) => {
-  const { to, subject, text } = req.body;  // Added OrderId to the destructured properties
 
-  // Create a transporter object using the default SMTP transport
-  const transporter = nodemailer.createTransport(MAIL_SETTINGS);
-
-  try {
-      // Send mail with defined transport object
-      let info = await transporter.sendMail({
-          from: `"Career Connect Services" <${MAIL_SETTINGS.auth.user}>`, // sender address
-          to: to, // list of receivers
-          subject: subject, // Subject line
-          text: text, // use the dynamically created email text
-      });
-
-      console.log('Message sent: %s', info.messageId);
-      res.send({ success: true, messageId: info.messageId });
-  } catch (error) {
-      console.error(error);
-      res.status(500).send({ success: false, message: 'Failed to send email' });
-  }
+// Download endpoint with error handling
+app.get("/download/:fileName", (req, res) => {
+  const filePath = path.join(__dirname, "public", req.params.fileName);
+  res.download(filePath, (err) => {
+    if (err) {
+      logger.error("Error downloading file:", err);
+      res
+        .status(500)
+        .send({ success: false, message: "Failed to download file" });
+    }
+    fs.unlink(filePath, (err) => {
+      if (err) logger.error("Error deleting file:", err);
+    });
+  });
 });
 
-
+// Global error handler
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).json({ success: false, message: "Something went wrong!" });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || SERVER_PORT;
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
 });

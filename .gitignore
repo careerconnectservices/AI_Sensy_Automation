@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules/
-utils/
+utils/*.csv
+utils
 # dotenv environment variables file
 .env
 .env.test
