@@ -149,557 +149,1444 @@ const counselingData = [
 
 const counselingIPUChoiceFillingData = [
   {
-    Choice_No: 1,
     Institute_Type: "GOVT",
-    Institute_Name:
+    Institute:
       "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
-    Program_Name: "Computer Science & Engineering (Dual Degree)",
-    JEEMainsRank: 70000,
+    Program: "Computer Science & Engineering (Dual Degree)",
+    Quota: "OS",
+    Closing_Rank: 22997,
   },
   {
-    Choice_No: 2,
     Institute_Type: "GOVT",
-    Institute_Name:
+    Institute:
       "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
-    Program_Name: "Information Technology (Dual Degree)",
-    JEEMainsRank: 70000,
+    Program: "Information Technology (Dual Degree)",
+    Quota: "OS",
+    Closing_Rank: 26268,
   },
   {
-    Choice_No: 3,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 31844,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 36793,
+  },
+  {
     Institute_Type: "GOVT",
-    Institute_Name:
+    Institute:
       "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
-    Program_Name: "Electronics & Communication Engineering (Dual Degree)",
-    JEEMainsRank: 70000,
+    Program: "Electronics & Communication Engineering (Dual Degree)",
+    Quota: "OS",
+    Closing_Rank: 39790,
   },
   {
-    Choice_No: 4,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 5,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Computer Science & Engineering (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 6,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "CSE- AIML",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 7,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "CSE - AI",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 8,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "CSE- DS",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 9,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Computer Science & Technology",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 10,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 11,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Information Technology and Engineering",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 12,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 13,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Computer Science & Engineering (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 14,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 15,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Information Technology (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 16,
-    Institute_Type: "Private",
-    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 17,
-    Institute_Type: "Private",
-    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 18,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Electronics & Communication Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 19,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
-    Program_Name: "Computer Science & Engineering",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 20,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
-    Program_Name: "CSE- DS",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 21,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
-    Program_Name: "Information Technology",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 22,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Electronics & Comm.- Advance Comm. Technology",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 23,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Electronics Engg.- VLSI Design & Technology",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 24,
     Institute_Type: "GOVT",
-    Institute_Name: "University School of Automation & Robotics",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 70000,
+    Institute:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Computer Science & Engineering (Dual Degree)",
+    Quota: "HS",
+    Closing_Rank: 42640,
   },
   {
-    Choice_No: 25,
-    Institute_Type: "GOVT",
-    Institute_Name: "University School of Automation & Robotics",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 26,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Electronics & Communication Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 27,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Electronics & Communication Engineering (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 28,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
-    Program_Name: "Computer Science & Engineering",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 29,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 30,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Computer Science & Engineering (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 31,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Computer Science & Technology",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 32,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "CS",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 33,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 34,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Information Technology (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 35,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 36,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "Computer Science & Engineering (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 37,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "CSE- AIML",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 38,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "CSE- DS",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 39,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 40,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "Information Technology (Shift II)",
-    JEEMainsRank: 70000,
-  },
-  {
-    Choice_No: 41,
-    Institute_Type: "Private",
-    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
-    Program_Name: "Electronics & Communication Engineering (Shift I)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 42,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
-    Program_Name: "Electronics & Communication Engineering",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 43,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 44,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 45,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 46,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 47,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Machine Learning (Shift II)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 48,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Data Science (Shift II)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 49,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Electronics & Communication Engineering (Shift I)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 50,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Dr. Akhilesh Das Gupta Institute of Technology & Management",
-    Program_Name: "Electronics & Communication Engineering (Shift II)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 51,
-    Institute_Type: "Private",
-    Institute_Name: "Guru Teg Bahadur Institute of Technology",
-    Program_Name: "Electronics & Communication Engineering (Shift I)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 52,
-    Institute_Type: "Private",
-    Institute_Name:
+    Institute_Type: "PRIVATE",
+    Institute:
       "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
-    Program_Name: "Electrical & Electronics Engineering (Shift I)",
-    JEEMainsRank: 400000,
+    Program: "Computer Science & Technology",
+    Quota: "OS",
+    Closing_Rank: 45462,
   },
   {
-    Choice_No: 53,
-    Institute_Type: "Private",
-    Institute_Name: "Maharaja Surajmal Institute Technology",
-    Program_Name: "Electrical & Electronics Engineering (Shift I)",
-    JEEMainsRank: 400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE - AI",
+    Quota: "OS",
+    Closing_Rank: 49156,
   },
   {
-    Choice_No: 54,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 49712,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 50516,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE- AIML",
+    Quota: "OS",
+    Closing_Rank: 50580,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE- DS",
+    Quota: "OS",
+    Closing_Rank: 51035,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Information Technology and Engineering",
+    Quota: "OS",
+    Closing_Rank: 51524,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 53327,
+  },
+  {
     Institute_Type: "GOVT",
-    Institute_Name: "University School of Automation & Robotics",
-    Program_Name: "Industrial Internet of Things",
-    JEEMainsRank: 400000,
+    Institute:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Information Technology (Dual Degree)",
+    Quota: "HS",
+    Closing_Rank: 53406,
   },
   {
-    Choice_No: 55,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "Computer Science & Engineering (Shift I)",
-    JEEMainsRank: 400000,
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 55825,
   },
   {
-    Choice_No: 56,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "Computer Science & Engineering (Shift II)",
-    JEEMainsRank: 400000,
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Information Technology (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 56968,
   },
   {
-    Choice_No: 57,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "Information Technology (Shift I)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 58,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "CSE (Cyber Security)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 59,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 60,
-    Institute_Type: "Private",
-    Institute_Name: "HMR Institute of Technology & Management",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 61,
-    Institute_Type: "Private",
-    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
-    Program_Name: "Electrical & Electronics Engineering (Shift I)",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 62,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi-110085",
-    Program_Name: "Electrical & Electronics Engineering",
-    JEEMainsRank: 400000,
-  },
-  {
-    Choice_No: 63,
     Institute_Type: "GOVT",
-    Institute_Name: "University School of Automation & Robotics",
-    Program_Name: "Automation & Robotics",
-    JEEMainsRank: 400000,
+    Institute: "University School of Automation & Robotics",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 59450,
   },
   {
-    Choice_No: 64,
-    Institute_Type: "Private",
-    Institute_Name: "Bharati Vidyapeeth's College of Engineering",
-    Program_Name: "Instrumentation & Control Engineering (Shift I)",
-    JEEMainsRank: 400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 60501,
   },
   {
-    Choice_No: 65,
-    Institute_Type: "Private",
-    Institute_Name:
-      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block",
-    Program_Name: "Industrial Internet of Things",
-    JEEMainsRank: 400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 61152,
   },
   {
-    Choice_No: 66,
-    Institute_Type: "Private",
-    Institute_Name: "Greater Noida Institute of Technology",
-    Program_Name: "Computer Science & Engineering",
-    JEEMainsRank: 1400000,
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 61196,
   },
   {
-    Choice_No: 67,
-    Institute_Type: "Private",
-    Institute_Name:
-      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
-    Program_Name: "Computer Science & Engineering",
-    JEEMainsRank: 1400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 62641,
   },
   {
-    Choice_No: 68,
-    Institute_Type: "Private",
-    Institute_Name: "Greater Noida Institute of Technology",
-    Program_Name: "Information Technology",
-    JEEMainsRank: 1400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "CSE- DS",
+    Quota: "OS",
+    Closing_Rank: 64050,
   },
   {
-    Choice_No: 69,
-    Institute_Type: "Private",
-    Institute_Name:
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Information Technology",
+    Quota: "OS",
+    Closing_Rank: 64756,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics & Comm.- Advance Comm. Technology",
+    Quota: "OS",
+    Closing_Rank: 65237,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 66109,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics Engg.- VLSI Design & Technology",
+    Quota: "OS",
+    Closing_Rank: 67104,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 67761,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 68300,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electronics & Communication Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 69626,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute:
+      "University School of Information & Communication Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Electronics & Communication Engineering (Dual Degree)",
+    Quota: "HS",
+    Closing_Rank: 70012,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 70252,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 71198,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 73644,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Electronics & Communication Engineering",
+    Quota: "OS",
+    Closing_Rank: 75326,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Automation & Robotics",
+    Quota: "OS",
+    Closing_Rank: 77048,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Industrial Internet of Things",
+    Quota: "OS",
+    Closing_Rank: 77548,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 79093,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 79241,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Mechanical & Automation Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 79920,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 81861,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 83024,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 83257,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 85476,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Electrical & Electronics Engineering",
+    Quota: "OS",
+    Closing_Rank: 85661,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Technology",
+    Quota: "OS",
+    Closing_Rank: 87488,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 87737,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 89549,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Information Technology (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 89624,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE- AIML",
+    Quota: "HS",
+    Closing_Rank: 90166,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Tegh Bahadur 4th Centenary Engineering College, G-8 Area, Rajouri Garden, New Delhi-110064",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 92046,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Computer Science & Technology",
+    Quota: "HS",
+    Closing_Rank: 92051,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE - AI",
+    Quota: "HS",
+    Closing_Rank: 92264,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Mechanical Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 92873,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "CS",
+    Quota: "OS",
+    Closing_Rank: 93122,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 94040,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "CSE- AIML",
+    Quota: "OS",
+    Closing_Rank: 94055,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "CSE- DS",
+    Quota: "OS",
+    Closing_Rank: 94731,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 96244,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Information Technology (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 97208,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 98134,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "CSE- DS",
+    Quota: "HS",
+    Closing_Rank: 99433,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 99652,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Instrumentation & Control Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 99795,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 100008,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 100487,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 100672,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Machine Learning (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 102470,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Data Science (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 102526,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute:
+      "University School of Chemical Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Chemical Engineering (Dual Degree)",
+    Quota: "OS",
+    Closing_Rank: 102791,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 102882,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Electronics & Communication Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 104381,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 106017,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Industrial Internet of Things",
+    Quota: "OS",
+    Closing_Rank: 106693,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "BM Institute of Engineering & Technology (Jain Minority Institute), Behind Fazilpur Power Station Sonepath, Bahalgarh Road, Village Raipur, Sonepat, Haryana",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 107281,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
       "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
-    Program_Name: "Computer Science & Engineering",
-    JEEMainsRank: 1400000,
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 108444,
   },
   {
-    Choice_No: 70,
-    Institute_Type: "Private",
-    Institute_Name:
-      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 1400000,
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 109630,
   },
   {
-    Choice_No: 71,
-    Institute_Type: "Private",
-    Institute_Name:
-      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 1400000,
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 110036,
   },
   {
-    Choice_No: 72,
-    Institute_Type: "Private",
-    Institute_Name:
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "OS",
+    Closing_Rank: 112357,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
       "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
-    Program_Name: "Artificial Intelligence & Machine Learning",
-    JEEMainsRank: 1400000,
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 112446,
   },
   {
-    Choice_No: 73,
-    Institute_Type: "Private",
-    Institute_Name:
+    Institute_Type: "PRIVATE",
+    Institute:
+      "BM Institute of Engineering & Technology (Jain Minority Institute), Behind Fazilpur Power Station Sonepath, Bahalgarh Road, Village Raipur, Sonepat, Haryana",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 113022,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 113227,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute:
+      "University School of Chemical Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Bio-chemical Engineering (Dual Degree)",
+    Quota: "OS",
+    Closing_Rank: 114268,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 114303,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Electronics & Communication Engineering",
+    Quota: "OS",
+    Closing_Rank: 114897,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Information Technology and Engineering",
+    Quota: "HS",
+    Closing_Rank: 115407,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
       "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
-    Program_Name: "Artificial Intelligence & Data Science",
-    JEEMainsRank: 1400000,
+    Program: "Computer Science & Technology",
+    Quota: "OS",
+    Closing_Rank: 115604,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Electrical & Electronics Engineering",
+    Quota: "OS",
+    Closing_Rank: 116755,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 117436,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 117624,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Greater Noida Institute of Technology",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 118001,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Mechanical Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 118814,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 118889,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "CSE (Cyber Security)",
+    Quota: "OS",
+    Closing_Rank: 119020,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Information Technology (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 119270,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Greater Noida Institute of Technology",
+    Program: "Information Technology",
+    Quota: "OS",
+    Closing_Rank: 119598,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Civil Engineering (Shift I)",
+    Quota: "OS",
+    Closing_Rank: 120620,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 120677,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "OS",
+    Closing_Rank: 121668,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "OS",
+    Closing_Rank: 122134,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Information Technology",
+    Quota: "OS",
+    Closing_Rank: 122147,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 122253,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Computer Science & Engineering",
+    Quota: "OS",
+    Closing_Rank: 122953,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Information Technology",
+    Quota: "OS",
+    Closing_Rank: 123072,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Computer Science & Technology",
+    Quota: "OS",
+    Closing_Rank: 123932,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Mechanical Engineering",
+    Quota: "OS",
+    Closing_Rank: 124683,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 125163,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Computer Science & Technology",
+    Quota: "OS",
+    Closing_Rank: 126236,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Electronics Engg.- VLSI Design & Technology",
+    Quota: "OS",
+    Closing_Rank: 126586,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Information Technology (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 129489,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 133323,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 136135,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 138984,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 146895,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "CSE- DS",
+    Quota: "HS",
+    Closing_Rank: 147321,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 164661,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Information Technology",
+    Quota: "HS",
+    Closing_Rank: 165854,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 171701,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 173998,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics & Comm.- Advance Comm. Technology",
+    Quota: "HS",
+    Closing_Rank: 174542,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electronics & Communication Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 180104,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 183942,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 190025,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 195287,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "CSE- AIML",
+    Quota: "HS",
+    Closing_Rank: 196791,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Computer Science & Technology",
+    Quota: "HS",
+    Closing_Rank: 208061,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Automation & Robotics",
+    Quota: "HS",
+    Closing_Rank: 212959,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "CSE- DS",
+    Quota: "HS",
+    Closing_Rank: 214127,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute: "University School of Automation & Robotics",
+    Program: "Industrial Internet of Things",
+    Quota: "HS",
+    Closing_Rank: 215066,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 216167,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electronics Engg.- VLSI Design & Technology",
+    Quota: "HS",
+    Closing_Rank: 217058,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 217768,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Information Technology (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 226193,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 233079,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Electronics & Communication Engineering",
+    Quota: "HS",
+    Closing_Rank: 234250,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 234727,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 241777,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "CS",
+    Quota: "HS",
+    Closing_Rank: 245475,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Tegh Bahadur 4th Centenary Engineering College, G-8 Area, Rajouri Garden, New Delhi-110064",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 247586,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 252723,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Maharaja Surajmal Institute Technology",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 255554,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Information Technology (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 261984,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 277751,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 281636,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Guru Teg Bahadur Institute of Technology, (Sikh Minority Institute)",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 288751,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Data Science (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 294005,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Electronics & Communication Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 296958,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Mechanical Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 298293,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Artificial Intelligence & Machine Learning (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 298637,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Industrial Internet of Things",
+    Quota: "HS",
+    Closing_Rank: 300345,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Electrical & Electronics Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 305045,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Bhagwan Parshuram Institute of Technology, P.S.P-4, Sector-17, Rohini, Delhi- 110085",
+    Program: "Electrical & Electronics Engineering",
+    Quota: "HS",
+    Closing_Rank: 309030,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Maharaja Agrasen Institute of Technology, Sector-22, Rohini, Delhi – 110085",
+    Program: "Mechanical & Automation Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 309290,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Electronics & Communication Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 315862,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Computer Science & Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 321000,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute:
+      "University School of Chemical Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Chemical Engineering (Dual Degree)",
+    Quota: "HS",
+    Closing_Rank: 339192,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Computer Science & Engineering (Shift II)",
+    Quota: "HS",
+    Closing_Rank: 347735,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "CSE (Cyber Security)",
+    Quota: "HS",
+    Closing_Rank: 358179,
+  },
+  {
+    Institute_Type: "GOVT",
+    Institute:
+      "University School of Chemical Technology, Sector 16 C, Dwarka, New Delhi - 110078",
+    Program: "Bio-chemical Engineering (Dual Degree)",
+    Quota: "HS",
+    Closing_Rank: 360051,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Bharati Vidyapeeth's College of Engineering",
+    Program: "Instrumentation & Control Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 360846,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Information Technology (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 373569,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 375537,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Vivekanand Institute of Professional Studies - Technical Campus, AU Block,(Outer Ring Road), Pitampura, Delhi-110088",
+    Program: "Electronics Engg.- VLSI Design & Technology",
+    Quota: "HS",
+    Closing_Rank: 383105,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 390850,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Mechanical Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 391163,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 391166,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "HMR Institute of Technology & Management",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 401205,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Dr. Akhilesh Das Gupta Institute of Technology & Management (Earlier name is Northern India Engineering College), FC-26, Shastri Park, New Delhi 110053",
+    Program: "Civil Engineering (Shift I)",
+    Quota: "HS",
+    Closing_Rank: 401941,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "BM Institute of Engineering & Technology (Jain Minority Institute), Behind Fazilpur Power Station Sonepath, Bahalgarh Road, Village Raipur, Sonepat, Haryana",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 402226,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 408297,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "BM Institute of Engineering & Technology (Jain Minority Institute), Behind Fazilpur Power Station Sonepath, Bahalgarh Road, Village Raipur, Sonepat, Haryana",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 409323,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 416059,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 416832,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Greater Noida Institute of Technology",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 422121,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Delhi Technical Campus, 28/1, Knowledge Park, III, Greater NOIDA, UP",
+    Program: "Computer Science & Technology",
+    Quota: "HS",
+    Closing_Rank: 429644,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Computer Science & Engineering",
+    Quota: "HS",
+    Closing_Rank: 431413,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute: "Greater Noida Institute of Technology",
+    Program: "Information Technology",
+    Quota: "HS",
+    Closing_Rank: 432369,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Artificial Intelligence & Machine Learning",
+    Quota: "HS",
+    Closing_Rank: 432383,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Computer Science & Technology",
+    Quota: "HS",
+    Closing_Rank: 435829,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "JIMS Engineering Management Technical Campus, 48/4, Knowledge Park - III Greater Noida",
+    Program: "Artificial Intelligence & Data Science",
+    Quota: "HS",
+    Closing_Rank: 436044,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Information Technology",
+    Quota: "HS",
+    Closing_Rank: 437148,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Trinity Institute of Innovations in Professional Studies, Plot no 2B/1, Knowledge Park - III, Greater Noida, Uttar Pradesh - 2011308",
+    Program: "Computer Science & Technology",
+    Quota: "HS",
+    Closing_Rank: 438098,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Electrical & Electronics Engineering",
+    Quota: "HS",
+    Closing_Rank: 439485,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Electronics & Communication Engineering",
+    Quota: "HS",
+    Closing_Rank: 441060,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Information Technology",
+    Quota: "HS",
+    Closing_Rank: 441104,
+  },
+  {
+    Institute_Type: "PRIVATE",
+    Institute:
+      "Shri Balwant Institute of Technology, Merrut Road (Pallri), Sonipat, NCR Delhi), Haryana (Jain Minority Institute)",
+    Program: "Mechanical Engineering",
+    Quota: "HS",
+    Closing_Rank: 445564,
   },
 ];
 
@@ -801,174 +1688,162 @@ app.post("/send_email", async (req, res) => {
   }
 });
 
-// IPU choice filling with enhanced input validation and error handling
-app.post("/ipu_choice_filling", (req, res) => {
+
+app.post("/ipu_choice_filling", async (req, res) => {
+  const {
+    FromWhereyouhavecompletedyou12thClass,
+    email,
+    CareerConnectMembers,
+    DomicileState,
+    Gender,
+    Category,
+    Jeepercentile,
+    jeeMainsRank,
+    Class12thPCMPercentage,
+    Class12thAggregatePercentageofTop5Subjects,
+    Recommendedcounseling,
+    StudentName,
+    ContactNumber,
+    PaymentId,
+    BITSATScore,
+    OrderId,
+    VITEEERank,
+    SRMJEERank,
+    ComedkRank,
+    MITManipalRank,
+    MHTCETPercentile,
+  } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ success: false, message: "Email is required." });
+  }
+
+
+  // Determine the quota based on 12th class completion location
+  const quota = FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi" ? 'HS' : 'OS';
+
+  // Filter based on quota and then sort by closing rank
+  let filteredData = counselingIPUChoiceFillingData
+    .filter(item => item.Quota === quota)
+    .sort((a, b) => a.Closing_Rank - b.Closing_Rank);  // Sorting by closing rank in ascending order
+
+  // Determine the number of programs to return
+  const limit = Math.floor(Math.random() * 21) + 35; // Randomly between 35 and 55
+
+  // If filtered list is shorter than the limit or contains no entries matching the rank condition, use the last entries
+  if (filteredData.length < limit || !filteredData.some(item => jeeMainsRank <= item.Closing_Rank)) {
+    filteredData = filteredData.slice(-limit); // Taking the last programs if the rank condition fails
+  } else {
+    // Otherwise, take the first 'limit' entries that closely match the rank
+    filteredData = filteredData.filter(item => jeeMainsRank+25000 >= item.Closing_Rank).slice(0, limit);
+  }
+
+  const counselingDetails = filteredData
+    .map((item, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${item.Institute_Type}</td>
+        <td>${item.Institute}</td>
+        <td>${item.Program}</td>
+      </tr>
+    `)
+    .join("");
+
+  const studentDetails = `
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px; border-color: #ddd;">
+      <thead>
+        <tr style="background-color: #0056b3; color: white;">
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.entries(req.body)
+          .map(([key, value]) => `
+          <tr style="background-color: #f9f9f9; color: #333;">
+            <td>${key.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase())}</td>
+            <td>${value}</td>
+          </tr>
+        `)
+          .join("")}
+      </tbody>
+    </table>
+  `;
+
+  const htmlContent = `
+    <html>
+      <head>
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef1f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+          }
+          h1, h2 {
+            text-align: center;
+            color: #0056b3;
+          }
+          table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+          }
+          th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+          }
+          th {
+            background-color: #0056b3;
+            color: #fff;
+          }
+          tr:hover {background-color: #f1f1f1;}
+        </style>
+      </head>
+      <body>
+        <h1>IPU Choice Filling Information</h1>
+        <p>Here are the detailed student attributes and recommended programs based on the provided information:</p>
+        ${studentDetails}
+        <h2>Recommended Counseling Programs</h2>
+        <table>
+          <thead>
+            <tr style="background-color: #0056b3; color: #fff;">
+              <th>#</th>
+              <th>Type</th>
+              <th>Institute Name</th>
+              <th>Program Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${counselingDetails}
+          </tbody>
+        </table>
+      </body>
+    </html>
+  `;
+
+  const transporter = nodemailer.createTransport(MAIL_SETTINGS);
+
   try {
-    const { jeemainsRank, FromWhereyouhavecompletedyou12thClass } = req.body;
-
-    // Filter data based on provided criteria
-    let filteredData = counselingIPUChoiceFillingData.filter(
-      (item) =>
-        FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi" &&
-        jeemainsRank <= item.JEEMainsRank
-    );
-
-    // Create a new PDF document
-    const doc = new PDFDocument({
-      margin: 40,
-      size: "A4",
-      layout: "landscape",
+    let info = await transporter.sendMail({
+      from: `"Career Connect Services" <${MAIL_SETTINGS.auth.user}>`,
+      to: email,
+      bcc: CareerConnectMembers,
+      subject: `IPU Choice Filling Information for ${StudentName}`,
+      html: htmlContent,
     });
 
-    // Set headers for downloading the PDF
-    res.setHeader(
-      "Content-disposition",
-      'attachment; filename="choice_filling.pdf"'
-    );
-    res.setHeader("Content-type", "application/pdf");
-    doc.pipe(res);
-
-    // Set title and headers
-    doc
-      .fontSize(16)
-      .fillColor("black")
-      .font("Helvetica-Bold")
-      .text("Career Connect Service Free Choice Filling for IPU", 50, 30, {
-        align: "center",
-        underline: true,
-      });
-
-    const headers = ["S. No", "Type", "Institute Name", "Program Name"];
-    const columnWidths = [50, 80, 390, 390];
-    const startY = 100;
-    let yPosition = startY;
-
-    // Function to draw headers
-    function drawHeaders(doc, headers, yPosition, columnWidths) {
-      doc.fontSize(10).fillColor("blue").font("Helvetica-Bold");
-      let xPosition = 50;
-      headers.forEach((header, i) => {
-        doc.text(header, xPosition, yPosition, {
-          width: columnWidths[i],
-          align: "center",
-        });
-        xPosition += columnWidths[i];
-      });
-    }
-
-    // Draw headers initially
-    drawHeaders(doc, headers, yPosition, columnWidths);
-    yPosition += 25; // Adjust y-position for content
-
-    // Function to add rows of data to the PDF
-    filteredData.forEach((item, index) => {
-      let rowHeight = Math.max(
-        calculateTextHeight(doc, item.Institute_Name, columnWidths[2], 10),
-        calculateTextHeight(doc, item.Program_Name, columnWidths[3], 10),
-        20
-      );
-
-      if (yPosition + rowHeight > doc.page.height - 50) {
-        doc.addPage();
-        yPosition = 50; // Reset yPosition for new page
-        drawHeaders(doc, headers, yPosition, columnWidths);
-        yPosition += 25;
-      }
-
-      let fillColor = index % 2 === 0 ? "#EEEEEE" : "#FFFFFF";
-      let xPosition = 50;
-      doc
-        .rect(
-          xPosition,
-          yPosition,
-          columnWidths.reduce((a, b) => a + b, 0),
-          rowHeight
-        )
-        .fill(fillColor);
-      doc.fontSize(10).fillColor("#000000");
-
-      [
-        index + 1,
-        item.Institute_Type,
-        item.Institute_Name,
-        item.Program_Name,
-      ].forEach((text, i) => {
-        doc.text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, {
-          width: columnWidths[i],
-          align: "left",
-        });
-        xPosition += columnWidths[i];
-      });
-
-      yPosition += rowHeight;
-    });
-
-    doc.end(); // Finalize the PDF and end the stream
+    logger.info("Email sent successfully: %s", info.messageId);
+    res.json({ success: true, message: "Email has been sent successfully." });
   } catch (error) {
-    logger.error("Error:", error);
-    res
-      .status(500)
-      .json({ success: false, message: "Error processing request." });
+    console.error("Failed to send email:", error);
+    res.status(500).json({ success: false, message: "Failed to send email." });
   }
 });
 
-// Helper function to calculate text height for proper wrapping
-function calculateTextHeight(doc, text, width, fontSize) {
-  doc.font("Helvetica").fontSize(fontSize);
-  const words = text.split(" ");
-  let line = "";
-  let lines = 1;
-  words.forEach((word) => {
-    const testLine = line + word + " ";
-    if (doc.widthOfString(testLine) > width) {
-      lines++;
-      line = word + " ";
-    } else {
-      line = testLine;
-    }
-  });
-  return lines * (fontSize * 1.5); // Estimated line height
-}
-
-// app.get("/list-files", (req, res) => {
-//   const directoryPath = path.join(__dirname); // Adjust the path as needed
-//   fs.readdir(directoryPath, (err, files) => {
-//     if (err) {
-//       console.error("Failed to list files:", err);
-//       return res.status(500).send("Failed to list files");
-//     }
-
-//     // Use a map to collect file stats promises
-//     let statsPromises = files.map(file => {
-//       return new Promise((resolve, reject) => {
-//         const filePath = path.join(directoryPath, file);
-//         fs.stat(filePath, (err, stats) => {
-//           if (err) {
-//             reject(`Error retrieving file stats for ${file}: ${err}`);
-//           } else {
-//             resolve({ file, stats });
-//           }
-//         });
-//       });
-//     });
-
-//     // Wait for all stats to be collected
-//     Promise.all(statsPromises)
-//       .then(results => {
-//         // Prepare a detailed list with file stats
-//         const detailedFiles = results.map(result => {
-//           return { name: result.file, stats: result.stats };
-//         });
-//         res.send(detailedFiles);
-//       })
-//       .catch(statsError => {
-//         console.error("Error retrieving stats for files:", statsError);
-//         res.status(500).send("Error retrieving file stats");
-//       });
-//   });
-// });
-
-// Global error handler
 
 app.use((err, req, res, next) => {
   logger.error(err.stack);
