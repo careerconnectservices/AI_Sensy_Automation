@@ -17,12 +17,16 @@ const app = express();
 app.use(helmet()); // Sets various HTTP headers to help protect your app.
 app.use(cors()); // Enable CORS with default settings.
 app.use(express.json()); // Middleware to parse JSON
-
+app.set('trust proxy', true);
 // Rate limiting to prevent brute-force attacks
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
+  keyGenerator: function(req /*, res*/) {
+      return req.ip; // Using the IP determined by Express, which respects the 'trust proxy' setting
+  }
 });
+
 app.use(limiter);
 
 const counselingData = [
