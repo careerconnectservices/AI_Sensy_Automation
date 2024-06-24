@@ -904,15 +904,18 @@ app.post("/ipu_choice_filling", (req, res) => {
 
 // Download endpoint with error handling
 app.get("/download/:fileName", (req, res) => {
+  console.log("current dir",__dirname,"fileName",req.params.fileName)
   const filePath = path.join(__dirname, "public", req.params.fileName);
   res.download(filePath, (err) => {
     if (err) {
       logger.error("Error downloading file:", err);
+      console.log(err)
       res
         .status(500)
         .send({ success: false, message: "Failed to download file" });
     }
     fs.unlink(filePath, (err) => {
+      console.log(err)
       if (err) logger.error("Error deleting file:", err);
     });
   });
