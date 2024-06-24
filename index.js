@@ -17,14 +17,14 @@ const app = express();
 app.use(helmet()); // Sets various HTTP headers to help protect your app.
 app.use(cors()); // Enable CORS with default settings.
 app.use(express.json()); // Middleware to parse JSON
-app.set('trust proxy', true);
+app.set("trust proxy", true);
 // Rate limiting to prevent brute-force attacks
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
-  keyGenerator: function(req /*, res*/) {
-      return req.ip; // Using the IP determined by Express, which respects the 'trust proxy' setting
-  }
+  keyGenerator: function (req /*, res*/) {
+    return req.ip; // Using the IP determined by Express, which respects the 'trust proxy' setting
+  },
 });
 
 app.use(limiter);
@@ -807,30 +807,45 @@ app.post("/ipu_choice_filling", (req, res) => {
     const { jeemainsRank, FromWhereyouhavecompletedyou12thClass } = req.body;
     let filteredData = counselingIPUChoiceFillingData;
     if (FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi") {
-      filteredData = filteredData.filter(item => jeemainsRank <= item.JEEMainsRank);
+      filteredData = filteredData.filter(
+        (item) => jeemainsRank <= item.JEEMainsRank
+      );
     }
 
-    const doc = new PDFDocument({ margin: 40, size: 'A4', layout: 'landscape' });
+    const doc = new PDFDocument({
+      margin: 40,
+      size: "A4",
+      layout: "landscape",
+    });
     const fileName = `Choice_Filling_${Date.now()}.pdf`;
     const filePath = path.join(__dirname, "public", fileName);
     doc.pipe(fs.createWriteStream(filePath));
 
     // Set title
-    doc.fontSize(16).fillColor('black').font('Helvetica-Bold')
-       .text('Career Connect Service Free Choice Filling for IPU', 50, 30, { align: 'center', underline: true });
+    doc
+      .fontSize(16)
+      .fillColor("black")
+      .font("Helvetica-Bold")
+      .text("Career Connect Service Free Choice Filling for IPU", 50, 30, {
+        align: "center",
+        underline: true,
+      });
 
     // Define column widths and other constants
     const headers = ["S. No", "Type", "Institute Name", "Program Name"];
-    const columnWidths = [50, 80, 390, 390];  // Space allocation per column
-    const startY = 100;  // Adjust start position to give space for the title
+    const columnWidths = [50, 80, 390, 390]; // Space allocation per column
+    const startY = 100; // Adjust start position to give space for the title
     let yPosition = startY;
 
     // Function to draw headers with blue text
     function drawHeaders(doc, headers, yPosition, columnWidths) {
-      doc.fontSize(10).fillColor('blue').font('Helvetica-Bold');
+      doc.fontSize(10).fillColor("blue").font("Helvetica-Bold");
       let xPosition = 50;
       headers.forEach((header, i) => {
-        doc.text(header, xPosition, yPosition, { width: columnWidths[i], align: 'center' });
+        doc.text(header, xPosition, yPosition, {
+          width: columnWidths[i],
+          align: "center",
+        });
         xPosition += columnWidths[i];
       });
     }
@@ -841,20 +856,20 @@ app.post("/ipu_choice_filling", (req, res) => {
 
     // Function to calculate dynamic text height and ensure proper wrapping
     function calculateTextHeight(text, width, fontSize) {
-      doc.font('Helvetica').fontSize(fontSize);
-      const words = text.split(' ');
-      let line = '';
+      doc.font("Helvetica").fontSize(fontSize);
+      const words = text.split(" ");
+      let line = "";
       let lines = 1;
-      words.forEach(word => {
-        const testLine = line + word + ' ';
+      words.forEach((word) => {
+        const testLine = line + word + " ";
         if (doc.widthOfString(testLine) > width) {
           lines++;
-          line = word + ' ';
+          line = word + " ";
         } else {
           line = testLine;
         }
       });
-      return lines * (fontSize * 1.5);  // Adjusted line height for better readability
+      return lines * (fontSize * 1.5); // Adjusted line height for better readability
     }
 
     // Adding rows with alternate coloring for better readability
@@ -862,7 +877,7 @@ app.post("/ipu_choice_filling", (req, res) => {
       const rowHeight = Math.max(
         calculateTextHeight(item.Institute_Name, columnWidths[2], 10),
         calculateTextHeight(item.Program_Name, columnWidths[3], 10),
-        20  // Minimum row height
+        20 // Minimum row height
       );
 
       if (yPosition + rowHeight > doc.page.height - 50) {
@@ -873,50 +888,69 @@ app.post("/ipu_choice_filling", (req, res) => {
       }
 
       // Alternate row color
-      let fillColor = index % 2 === 0 ? '#EEEEEE' : '#FFFFFF';  // Slightly gray for better contrast on alternate rows
-      let totalWidth = columnWidths.reduce((a, b) => a + b, 0);  // Correctly sum up the total width
+      let fillColor = index % 2 === 0 ? "#EEEEEE" : "#FFFFFF"; // Slightly gray for better contrast on alternate rows
+      let totalWidth = columnWidths.reduce((a, b) => a + b, 0); // Correctly sum up the total width
 
       let xPosition = 50;
       doc.rect(xPosition, yPosition, totalWidth, rowHeight).fill(fillColor);
-      [index + 1, item.Institute_Type, item.Institute_Name, item.Program_Name].forEach((text, i) => {
-        doc.fontSize(10).fillColor('#000000').text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, { width: columnWidths[i], align: 'left' });
+      [
+        index + 1,
+        item.Institute_Type,
+        item.Institute_Name,
+        item.Program_Name,
+      ].forEach((text, i) => {
+        doc
+          .fontSize(10)
+          .fillColor("#000000")
+          .text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, {
+            width: columnWidths[i],
+            align: "left",
+          });
         xPosition += columnWidths[i];
       });
 
-      yPosition += rowHeight;  // Increment yPosition by the dynamic row height
+      yPosition += rowHeight; // Increment yPosition by the dynamic row height
     });
 
-    doc.end();  // Finalize the PDF and end the stream
+    doc.end(); // Finalize the PDF and end the stream
 
-    const downloadLink = `${req.protocol}://${req.get("host")}/download/${fileName}`;
+    const downloadLink = `${req.protocol}://${req.get(
+      "host"
+    )}/download/${fileName}`;
     res.json({
       success: true,
-      message: "Generated PDF with clearly visible headers. Download from the link below.",
+      message:
+        "Generated PDF with clearly visible headers. Download from the link below.",
       pdfLink: downloadLink,
     });
-  } catch ( error) {
+  } catch (error) {
     logger.error("Error:", error);
-    res.status(500).json({ success: false, message: "Error processing request." });
+    res
+      .status(500)
+      .json({ success: false, message: "Error processing request." });
   }
 });
-
 
 const BASE_PATH = process.env.BASE_PATH || __dirname;
 
 app.get("/download/:fileName", (req, res) => {
   const filePath = path.join(BASE_PATH, "public", req.params.fileName);
-  console.log(BASE_PATH,"----",filePath)
+  console.log(BASE_PATH, "----", filePath);
   // Check file access
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       logger.error("File does not exist or no permission:", filePath);
-      return res.status(404).send({ success: false, message: "File not found or inaccessible" });
+      return res
+        .status(404)
+        .send({ success: false, message: "File not found or inaccessible" });
     }
 
     res.download(filePath, (err) => {
       if (err) {
         logger.error("Error downloading file:", err);
-        return res.status(500).send({ success: false, message: "Failed to download file" });
+        return res
+          .status(500)
+          .send({ success: false, message: "Failed to download file" });
       }
 
       // Attempt to delete the file after successful download
@@ -931,6 +965,44 @@ app.get("/download/:fileName", (req, res) => {
   });
 });
 
+
+app.get("/list-files", (req, res) => {
+  const directoryPath = path.join(__dirname); // Adjust the path as needed
+  fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+      console.error("Failed to list files:", err);
+      return res.status(500).send("Failed to list files");
+    }
+
+    // Use a map to collect file stats promises
+    let statsPromises = files.map(file => {
+      return new Promise((resolve, reject) => {
+        const filePath = path.join(directoryPath, file);
+        fs.stat(filePath, (err, stats) => {
+          if (err) {
+            reject(`Error retrieving file stats for ${file}: ${err}`);
+          } else {
+            resolve({ file, stats });
+          }
+        });
+      });
+    });
+
+    // Wait for all stats to be collected
+    Promise.all(statsPromises)
+      .then(results => {
+        // Prepare a detailed list with file stats
+        const detailedFiles = results.map(result => {
+          return { name: result.file, stats: result.stats };
+        });
+        res.send(detailedFiles);
+      })
+      .catch(statsError => {
+        console.error("Error retrieving stats for files:", statsError);
+        res.status(500).send("Error retrieving file stats");
+      });
+  });
+});
 
 // Global error handler
 app.use((err, req, res, next) => {
