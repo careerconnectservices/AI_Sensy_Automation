@@ -805,23 +805,30 @@ app.post("/send_email", async (req, res) => {
 app.post("/ipu_choice_filling", (req, res) => {
   try {
     const { jeemainsRank, FromWhereyouhavecompletedyou12thClass } = req.body;
-    let filteredData = counselingIPUChoiceFillingData;
-    if (FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi") {
-      filteredData = filteredData.filter(
-        (item) => jeemainsRank <= item.JEEMainsRank
-      );
-    }
 
+    // Filter data based on provided criteria
+    let filteredData = counselingIPUChoiceFillingData.filter(
+      (item) =>
+        FromWhereyouhavecompletedyou12thClass.toLowerCase() === "delhi" &&
+        jeemainsRank <= item.JEEMainsRank
+    );
+
+    // Create a new PDF document
     const doc = new PDFDocument({
       margin: 40,
       size: "A4",
       layout: "landscape",
     });
-    const fileName = `Choice_Filling_${Date.now()}.pdf`;
-    const filePath = path.join(__dirname, "public", fileName);
-    doc.pipe(fs.createWriteStream(filePath));
 
-    // Set title
+    // Set headers for downloading the PDF
+    res.setHeader(
+      "Content-disposition",
+      'attachment; filename="choice_filling.pdf"'
+    );
+    res.setHeader("Content-type", "application/pdf");
+    doc.pipe(res);
+
+    // Set title and headers
     doc
       .fontSize(16)
       .fillColor("black")
@@ -831,13 +838,12 @@ app.post("/ipu_choice_filling", (req, res) => {
         underline: true,
       });
 
-    // Define column widths and other constants
     const headers = ["S. No", "Type", "Institute Name", "Program Name"];
-    const columnWidths = [50, 80, 390, 390]; // Space allocation per column
-    const startY = 100; // Adjust start position to give space for the title
+    const columnWidths = [50, 80, 390, 390];
+    const startY = 100;
     let yPosition = startY;
 
-    // Function to draw headers with blue text
+    // Function to draw headers
     function drawHeaders(doc, headers, yPosition, columnWidths) {
       doc.fontSize(10).fillColor("blue").font("Helvetica-Bold");
       let xPosition = 50;
@@ -850,79 +856,54 @@ app.post("/ipu_choice_filling", (req, res) => {
       });
     }
 
-    // Adding headers
+    // Draw headers initially
     drawHeaders(doc, headers, yPosition, columnWidths);
-    yPosition += 25; // Increase yPosition by header height
+    yPosition += 25; // Adjust y-position for content
 
-    // Function to calculate dynamic text height and ensure proper wrapping
-    function calculateTextHeight(text, width, fontSize) {
-      doc.font("Helvetica").fontSize(fontSize);
-      const words = text.split(" ");
-      let line = "";
-      let lines = 1;
-      words.forEach((word) => {
-        const testLine = line + word + " ";
-        if (doc.widthOfString(testLine) > width) {
-          lines++;
-          line = word + " ";
-        } else {
-          line = testLine;
-        }
-      });
-      return lines * (fontSize * 1.5); // Adjusted line height for better readability
-    }
-
-    // Adding rows with alternate coloring for better readability
+    // Function to add rows of data to the PDF
     filteredData.forEach((item, index) => {
-      const rowHeight = Math.max(
-        calculateTextHeight(item.Institute_Name, columnWidths[2], 10),
-        calculateTextHeight(item.Program_Name, columnWidths[3], 10),
-        20 // Minimum row height
+      let rowHeight = Math.max(
+        calculateTextHeight(doc, item.Institute_Name, columnWidths[2], 10),
+        calculateTextHeight(doc, item.Program_Name, columnWidths[3], 10),
+        20
       );
 
       if (yPosition + rowHeight > doc.page.height - 50) {
         doc.addPage();
-        yPosition = 50;
+        yPosition = 50; // Reset yPosition for new page
         drawHeaders(doc, headers, yPosition, columnWidths);
         yPosition += 25;
       }
 
-      // Alternate row color
-      let fillColor = index % 2 === 0 ? "#EEEEEE" : "#FFFFFF"; // Slightly gray for better contrast on alternate rows
-      let totalWidth = columnWidths.reduce((a, b) => a + b, 0); // Correctly sum up the total width
-
+      let fillColor = index % 2 === 0 ? "#EEEEEE" : "#FFFFFF";
       let xPosition = 50;
-      doc.rect(xPosition, yPosition, totalWidth, rowHeight).fill(fillColor);
+      doc
+        .rect(
+          xPosition,
+          yPosition,
+          columnWidths.reduce((a, b) => a + b, 0),
+          rowHeight
+        )
+        .fill(fillColor);
+      doc.fontSize(10).fillColor("#000000");
+
       [
         index + 1,
         item.Institute_Type,
         item.Institute_Name,
         item.Program_Name,
       ].forEach((text, i) => {
-        doc
-          .fontSize(10)
-          .fillColor("#000000")
-          .text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, {
-            width: columnWidths[i],
-            align: "left",
-          });
+        doc.text(text.toString(), xPosition, yPosition + (rowHeight - 12) / 2, {
+          width: columnWidths[i],
+          align: "left",
+        });
         xPosition += columnWidths[i];
       });
 
-      yPosition += rowHeight; // Increment yPosition by the dynamic row height
+      yPosition += rowHeight;
     });
 
     doc.end(); // Finalize the PDF and end the stream
-
-    const downloadLink = `${req.protocol}://${req.get(
-      "host"
-    )}/download/${fileName}`;
-    res.json({
-      success: true,
-      message:
-        "Generated PDF with clearly visible headers. Download from the link below.",
-      pdfLink: downloadLink,
-    });
   } catch (error) {
     logger.error("Error:", error);
     res
@@ -931,80 +912,64 @@ app.post("/ipu_choice_filling", (req, res) => {
   }
 });
 
-const BASE_PATH = process.env.BASE_PATH || __dirname;
-
-app.get("/download/:fileName", (req, res) => {
-  const filePath = path.join(BASE_PATH, "public", req.params.fileName);
-  console.log(BASE_PATH, "----", filePath);
-  // Check file access
-  fs.access(filePath, fs.constants.F_OK, (err) => {
-    if (err) {
-      logger.error("File does not exist or no permission:", filePath);
-      return res
-        .status(404)
-        .send({ success: false, message: "File not found or inaccessible" });
+// Helper function to calculate text height for proper wrapping
+function calculateTextHeight(doc, text, width, fontSize) {
+  doc.font("Helvetica").fontSize(fontSize);
+  const words = text.split(" ");
+  let line = "";
+  let lines = 1;
+  words.forEach((word) => {
+    const testLine = line + word + " ";
+    if (doc.widthOfString(testLine) > width) {
+      lines++;
+      line = word + " ";
+    } else {
+      line = testLine;
     }
-
-    res.download(filePath, (err) => {
-      if (err) {
-        logger.error("Error downloading file:", err);
-        return res
-          .status(500)
-          .send({ success: false, message: "Failed to download file" });
-      }
-
-      // Attempt to delete the file after successful download
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          logger.error("Error deleting file:", err);
-        } else {
-          console.log("File deleted successfully");
-        }
-      });
-    });
   });
-});
+  return lines * (fontSize * 1.5); // Estimated line height
+}
 
+// app.get("/list-files", (req, res) => {
+//   const directoryPath = path.join(__dirname); // Adjust the path as needed
+//   fs.readdir(directoryPath, (err, files) => {
+//     if (err) {
+//       console.error("Failed to list files:", err);
+//       return res.status(500).send("Failed to list files");
+//     }
 
-app.get("/list-files", (req, res) => {
-  const directoryPath = path.join(__dirname); // Adjust the path as needed
-  fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-      console.error("Failed to list files:", err);
-      return res.status(500).send("Failed to list files");
-    }
+//     // Use a map to collect file stats promises
+//     let statsPromises = files.map(file => {
+//       return new Promise((resolve, reject) => {
+//         const filePath = path.join(directoryPath, file);
+//         fs.stat(filePath, (err, stats) => {
+//           if (err) {
+//             reject(`Error retrieving file stats for ${file}: ${err}`);
+//           } else {
+//             resolve({ file, stats });
+//           }
+//         });
+//       });
+//     });
 
-    // Use a map to collect file stats promises
-    let statsPromises = files.map(file => {
-      return new Promise((resolve, reject) => {
-        const filePath = path.join(directoryPath, file);
-        fs.stat(filePath, (err, stats) => {
-          if (err) {
-            reject(`Error retrieving file stats for ${file}: ${err}`);
-          } else {
-            resolve({ file, stats });
-          }
-        });
-      });
-    });
-
-    // Wait for all stats to be collected
-    Promise.all(statsPromises)
-      .then(results => {
-        // Prepare a detailed list with file stats
-        const detailedFiles = results.map(result => {
-          return { name: result.file, stats: result.stats };
-        });
-        res.send(detailedFiles);
-      })
-      .catch(statsError => {
-        console.error("Error retrieving stats for files:", statsError);
-        res.status(500).send("Error retrieving file stats");
-      });
-  });
-});
+//     // Wait for all stats to be collected
+//     Promise.all(statsPromises)
+//       .then(results => {
+//         // Prepare a detailed list with file stats
+//         const detailedFiles = results.map(result => {
+//           return { name: result.file, stats: result.stats };
+//         });
+//         res.send(detailedFiles);
+//       })
+//       .catch(statsError => {
+//         console.error("Error retrieving stats for files:", statsError);
+//         res.status(500).send("Error retrieving file stats");
+//       });
+//   });
+// });
 
 // Global error handler
+
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).json({ success: false, message: "Something went wrong!" });
