@@ -901,25 +901,36 @@ app.post("/ipu_choice_filling", (req, res) => {
 });
 
 
+const BASE_PATH = process.env.BASE_PATH || __dirname;
 
-// Download endpoint with error handling
 app.get("/download/:fileName", (req, res) => {
-  console.log("current dir",__dirname,"fileName",req.params.fileName)
-  const filePath = path.join(__dirname, "public", req.params.fileName);
-  res.download(filePath, (err) => {
+  const filePath = path.join(BASE_PATH, "public", req.params.fileName);
+  console.log(BASE_PATH,"----",filePath)
+  // Check file access
+  fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
-      logger.error("Error downloading file:", err);
-      console.log(err)
-      res
-        .status(500)
-        .send({ success: false, message: "Failed to download file" });
+      logger.error("File does not exist or no permission:", filePath);
+      return res.status(404).send({ success: false, message: "File not found or inaccessible" });
     }
-    fs.unlink(filePath, (err) => {
-      console.log(err)
-      if (err) logger.error("Error deleting file:", err);
+
+    res.download(filePath, (err) => {
+      if (err) {
+        logger.error("Error downloading file:", err);
+        return res.status(500).send({ success: false, message: "Failed to download file" });
+      }
+
+      // Attempt to delete the file after successful download
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          logger.error("Error deleting file:", err);
+        } else {
+          console.log("File deleted successfully");
+        }
+      });
     });
   });
 });
+
 
 // Global error handler
 app.use((err, req, res, next) => {
